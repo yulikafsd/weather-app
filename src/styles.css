@@ -1,0 +1,168 @@
+body {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 540px;
+}
+
+.city-link {
+    cursor: pointer;
+}
+
+.article-date {
+    font-weight: 700;
+    font-style: italic;
+}
+
+.btn-primary {
+    background-color: #42A5F5;
+    border-color: #42A5F5;
+}
+
+.btn-primary:hover {
+    background-color: #3080c2;
+    border-color: #3080c2;
+}
+
+.border-custom {
+border: 1px solid #42A5F5;
+}
+
+.btn-outline-custom {
+    color: #42A5F5;
+    border-color: #42A5F5;
+}
+
+.btn-outline-custom:hover {
+    color: #fff;
+    background-color: #42A5F5;
+    border-color: #42A5F5;
+}
+
+.text-primary {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.article-city {
+    font-size: 26px;
+}
+
+.article-weather__icon {
+    font-size: 80px;
+}
+
+.current-temp {
+    font-size: 28px;
+}
+
+.day-temp, .night-temp {
+font-size: 14px;
+}
+
+.temp {
+    width: 35px;
+}
+
+.temps-choice {
+    font-size: 28px;
+}
+
+.trend-icon {
+    font-size: 12px;
+}
+
+.socks-icon {
+    font-size: 14px;
+    color: rgb(255, 219, 16);
+}
+
+.humidity-icon {
+    font-size: 14px;
+    color: #42A5F5;
+}
+
+.wind-icon {
+    font-size: 14px;
+    color: #a3ccee;}
+
+.update-icon {
+    font-size: 14px;
+}
+
+.card-day {
+    font-size: 20px;
+}
+
+.weather-icon {
+    font-size: 40px;
+}
+
+.thunder-icon {
+    color: #2c5372;
+}
+
+.snow-icon {
+    color: #a3ccee;
+}
+
+.sun-icon {
+    color: #ffe600;
+}
+
+.cloud-icon {
+    color: #9dc9ee;
+}
+
+.rain-icon {
+color: #42A5F5;
+}
+
+.card {
+    border: none;
+}
+
+.card:hover{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 18px 0px;
+}
+
+.shadow-custom {
+    box-shadow: rgba(0, 0, 0, 0.15) 2px 3px 5px 0px;
+}
+
+.form-control {
+    height: calc(3.3rem) !important;
+}

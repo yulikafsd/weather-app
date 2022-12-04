@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <title>Weather Plugin</title>
+    <script
+      src="https://kit.fontawesome.com/a002921e25.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <div class="container shadow mt-3 mb-3 pt-3 pb-3 ps-4 pe-4">
+        <form class="form-floating mb-0">
+          <div class="text-center">
+            <button
+              type="button"
+              class="mylocation-button btn btn-primary btn-lg mb-1"
+            >
+              My Location
+            </button>
+          </div>
+          <p class="text-center mb-1">or</p>
+
+          <div class="input-group mb-2">
+            <div class="form-floating">
+              <input
+                type="text"
+                name="input"
+                class="form-control shadow-none border-custom"
+                id="floatingInput"
+                placeholder="city"
+              />
+              <label for="floatingInput">Enter the city...</label>
+            </div>
+            <button
+              class="btn btn-outline-custom btn-lg"
+              type="submit"
+              id="button-addon1"
+            >
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </form>
+        <ul class="d-flex justify-content-around mb-4 text-primary">
+          <li class="city-link text-center">Paris</li>
+          <li class="city-link text-center">Kyiv</li>
+          <li class="city-link text-center">London</li>
+          <li class="city-link text-center">Vienna</li>
+          <li class="city-link text-center">New York</li>
+          <li class="city-link text-center">Tokio</li>
+        </ul>
+
+        <article class="mb-3">
+          <h1 class="article-city">Kyiv</h1>
+          <div class="row mb-3">
+            <div class="article-weather col-5 d-flex align-items-center">
+              <i class="article-weather__icon sun-icon fa-solid fa-sun"></i>
+              <div class="article-weather__temp text-end">
+                <div class="d-flex">
+                  <p class="current-temp"><span class="temp">24</span>°</p>
+                  <div class="temps-choice">
+                    <a href="#" class="celsius">C</a><span>|</span
+                    ><a href="#" class="farengeit">F</a>
+                  </div>
+                </div>
+                <p class="weather-description mb-2">Sunny 😎</p>
+                <div
+                  class="day-temp d-flex align-items-center justify-content-end"
+                >
+                  <p class="day-temp">+<span class="temp">26</span>°C</p>
+                  <i class="trend-icon fa-solid fa-up-long ms-1"></i>
+                </div>
+                <div
+                  class="night-temp d-flex align-items-center justify-content-end"
+                >
+                  <p class="night-temp">+<span class="temp">14</span>°C</p>
+                  <i class="trend-icon fa-solid fa-down-long ms-1"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5 article-addon mt-auto mb-auto">
+              <div class="feels-like d-flex align-items-center mb-1">
+                <i
+                  class="socks-icon fa-solid fa-socks me-1"
+                  width="80px"
+                  height="80px"
+                ></i>
+                <p class="feels-like-temp article-addon__text">
+                  Feels like: <span class="temp">26</span>°C
+                </p>
+              </div>
+              <div class="humidity d-flex align-items-center mb-1">
+                <i class="humidity-icon fa-solid fa-droplet me-1"></i>
+                <p class="article-addon__text">
+                  Humidity: <span class="humidity-level">18</span>%
+                </p>
+              </div>
+              <div class="wind d-flex align-items-center">
+                <i class="wind-icon fa-solid fa-wind me-1"></i>
+                <p class="article-addon__text">
+                  Wind: <span class="wind-speed">1</span> km/h
+                </p>
+              </div>
+            </div>
+          </div>
+          <p class="article-date mb-2">Wednesday 16:59</p>
+          <button
+            type="button"
+            class="update-button btn btn-primary btn-sm shadow-custom"
+          >
+            Update now
+            <i class="update-icon fa-solid fa-rotate ms-1"></i>
+          </button>
+        </article>
+
+        <div class="row text-center">
+          <div class="col">
+            <div class="card shadow-custom">
+              <div class="card-body">
+                <h2 class="card-day">Thu</h2>
+                <p class="mb-2">27.10</p>
+                <i
+                  class="weather-icon cloud-icon fa-solid fa-cloud mb-2"
+                  width="40px"
+                  height="40px"
+                ></i>
+                <p>+20°C</p>
+                <p>+11°C</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-custom">
+              <div class="card-body">
+                <h2 class="card-day">Wed</h2>
+                <p class="mb-2">28.10</p>
+                <i
+                  class="weather-icon sun-icon fa-solid fa-sun mb-2"
+                  width="40px"
+                  height="40px"
+                ></i>
+                <p>+30°C</p>
+                <p>+16°C</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-custom">
+              <div class="card-body">
+                <h2 class="card-day">Fri</h2>
+                <p class="mb-2">29.10</p>
+                <i
+                  class="weather-icon thunder-icon fa-solid fa-cloud-bolt mb-2"
+                  width="40px"
+                  height="40px"
+                ></i>
+                <p>+20°C</p>
+                <p>+8°C</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-custom">
+              <div class="card-body">
+                <h2 class="card-day">Sat</h2>
+                <p class="mb-2">30.10</p>
+                <i
+                  class="weather-icon rain-icon fa-solid fa-cloud-showers-heavy mb-2"
+                  width="40px"
+                  height="40px"
+                ></i>
+                <p>+12°C</p>
+                <p>+3°C</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-custom">
+              <div class="card-body">
+                <h2 class="card-day">Sun</h2>
+                <p class="mb-2">31.10</p>
+                <i
+                  class="weather-icon snow-icon fa-solid fa-snowflake mb-2"
+                  width="40px"
+                  height="40px"
+                ></i>
+                <p>0°C</p>
+                <p>-2°C</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        <small
+          ><a
+            href="https://github.com/yulikafsd/weather-widget"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            >Open-source code</a
+          >
+          by Yulika</small
+        >
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script src="src/index.js" type="module"></script>
+  </body>
+</html>
