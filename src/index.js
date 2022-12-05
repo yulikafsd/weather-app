@@ -25,6 +25,7 @@ const months = [
 const refs = {
   formEl: document.querySelector('form'),
   myLocationBtn: document.querySelector('.mylocation-button'),
+  articleIconEl: document.querySelector('.article-weather__icon'),
   articleDateEl: document.querySelector('p.article-date'),
   articleCityEl: document.querySelector('h1.article-city'),
   currentTemp: document.querySelector('.current-temp .temp'),
@@ -42,6 +43,7 @@ const refs = {
 const {
   formEl,
   myLocationBtn,
+  articleIconEl,
   articleDateEl,
   articleCityEl,
   currentTemp,
@@ -56,8 +58,9 @@ const {
   updateBtn,
 } = refs;
 
-const apiUrl = 'http://api.openweathermap.org/data/2.5/weather?';
-const apiKey = '0a410cb602b47800e6427b619987ee25';
+const apiCityUrl = 'https://api.shecodes.io/weather/v1/current?';
+const apiForecastUrl = 'https://api.shecodes.io/weather/v1/forecast?';
+const apiKey = 'f848t750a97035b716efo4aca2d7b383';
 
 formEl.addEventListener('submit', onSubmit);
 myLocationBtn.addEventListener('click', getLocation);
@@ -65,42 +68,56 @@ farengeitLink.addEventListener('click', convertToFarengeit);
 celsiusLink.addEventListener('click', convertToCelsius);
 updateBtn.addEventListener('click', updateDate);
 
+function fetchData(url, message) {
+  axios
+    .get(url)
+    .then(res => {
+      if (url.includes(apiCityUrl)) {
+        showWeatherNow(res);
+      } else {
+        showWeatherForecast(res);
+      }
+    })
+    .catch(e => {
+      console.log(e);
+      alert(message);
+    });
+}
+
 function onSubmit(e) {
   e.preventDefault();
   const query = e.currentTarget.elements.input.value;
 
   const paramsObj = {
-    q: query,
-    limit: 1,
-    appid: apiKey,
+    query,
+    key: apiKey,
     units: 'metric',
   };
 
   const searchParams = new URLSearchParams(paramsObj).toString();
-  const url = `${apiUrl}${searchParams}`;
-
-  axios
-    .get(url)
-    .then(showWeather)
-    .catch(e => {
-      console.log(e);
-      alert(
-        `There is no such city in our database. Please, try checking weather with https://www.google.com/search?q=google+weather+${query}`,
-      );
-    });
+  const cityUrl = `${apiCityUrl}${searchParams}`;
+  const forecastUrl = `${apiForecastUrl}${searchParams}`;
+  const message =
+    'There is no such city in our database. Please, try checking weather with Google';
+  fetchData(cityUrl, message);
+  fetchData(forecastUrl, message);
 }
 
-function showDateNow() {
-  let newDate = new Date();
-  const day = days[newDate.getDay()];
-  const hours =
-    newDate.getHours() < 10 ? `0${newDate.getHours()}` : newDate.getHours();
+function showDateNow(timestamp) {
+  let date = '';
+
+  if (timestamp) {
+    const newTimestamp = timestamp * 1000;
+    date = new Date(newTimestamp);
+  } else {
+    date = new Date();
+  }
+
+  const day = days[date.getDay()];
+  const hours = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
   const minutes =
-    newDate.getMinutes() < 10
-      ? `0${newDate.getMinutes()}`
-      : newDate.getMinutes();
-  const currentDate = `${day} ${hours}:${minutes}`;
-  articleDateEl.innerHTML = currentDate;
+    date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
+  return `${day} ${hours}:${minutes}`;
 }
 
 function getLocation(e) {
@@ -113,44 +130,47 @@ function handlePosition(position) {
   const longitude = position.coords.longitude;
 
   const paramsObj = {
-    lat: latitude,
     lon: longitude,
-    appid: apiKey,
+    lat: latitude,
+    key: apiKey,
     units: 'metric',
   };
 
   const searchParams = new URLSearchParams(paramsObj).toString();
-  const url = `${apiUrl}${searchParams}`;
+  const cityUrl = `${apiCityUrl}${searchParams}`;
 
-  axios
-    .get(url)
-    .then(showWeather)
-    .catch(e => {
-      console.log(e);
-      alert(`Oops, something went wrong. Please, try again`);
-    });
+  const message = 'Oops, something went wrong. Please, try again';
+
+  fetchData(cityUrl, message);
 }
 
-function showWeather(response) {
-  showDateNow();
+function showWeatherNow(response) {
+  console.log(response.data);
 
-  const apiCity = response.data.name;
-  const apiTemp = Math.round(response.data.main.temp);
-  const description = response.data.weather[0].main;
-  const apiMinTemp = Math.round(response.data.main.temp_min);
-  const apiMaxTemp = Math.round(response.data.main.temp_max);
-  const apiFeelsLikeTemp = Math.round(response.data.main.feels_like);
-  const apiHumidity = Math.round(response.data.main.humidity);
-  const apiWind = Math.round(response.data.wind.speed);
+  const {
+    city,
+    condition: { description, icon, icon_url },
+    temperature: { current, humidity, feels_like },
+    wind: { speed },
+    time,
+  } = response.data;
 
-  articleCityEl.innerHTML = apiCity;
-  currentTemp.innerHTML = apiTemp;
-  maxTemp.innerHTML = apiMaxTemp;
-  minTemp.innerHTML = apiMinTemp;
+  articleDateEl.innerHTML = showDateNow(time);
+  articleCityEl.innerHTML = city;
+  currentTemp.innerHTML = Math.round(current);
   descrEl.innerHTML = description;
-  feelsLikeTemp.innerHTML = apiFeelsLikeTemp;
-  humidityLev.innerHTML = apiHumidity;
-  windSpeed.innerHTML = apiWind;
+  feelsLikeTemp.innerHTML = Math.round(feels_like);
+  humidityLev.innerHTML = Math.round(humidity);
+  windSpeed.innerHTML = Math.round(speed);
+  articleIconEl.setAttribute('src', icon_url);
+  articleIconEl.setAttribute('alt', icon);
+}
+
+function showWeatherForecast(response) {
+  console.log(response.data);
+
+  // maxTemp.innerHTML = Math.round(maximum);
+  // minTemp.innerHTML = Math.round(minimum);
 }
 
 let inCelsius = true;
@@ -199,5 +219,5 @@ function convertToCelsius(e) {
 
 function updateDate(e) {
   e.preventDefault();
-  showDateNow();
+  articleDateEl.innerHTML = showDateNow();
 }

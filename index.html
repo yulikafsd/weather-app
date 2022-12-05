@@ -22,10 +22,11 @@
     />
     <link rel="stylesheet" href="src/styles.css" />
     <title>Weather Plugin</title>
-    <script
+    <!-- Icons script -->
+    <!-- <script
       src="https://kit.fontawesome.com/a002921e25.js"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
@@ -58,7 +59,7 @@
               type="submit"
               id="button-addon1"
             >
-              <i class="fa-solid fa-magnifying-glass"></i>
+              <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
             </button>
           </div>
         </form>
@@ -75,7 +76,12 @@
           <h1 class="article-city">Kyiv</h1>
           <div class="row mb-3">
             <div class="article-weather col-5 d-flex align-items-center">
-              <i class="article-weather__icon sun-icon fa-solid fa-sun"></i>
+              <!-- <i class="article-weather__icon sun-icon fa-solid fa-sun"></i> -->
+              <img
+                src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                class="article-weather__icon"
+                alt="Weather Icon"
+              />
               <div class="article-weather__temp text-end">
                 <div class="d-flex">
                   <p class="current-temp"><span class="temp">24</span>°</p>
@@ -89,36 +95,36 @@
                   class="day-temp d-flex align-items-center justify-content-end"
                 >
                   <p class="day-temp">+<span class="temp">26</span>°C</p>
-                  <i class="trend-icon fa-solid fa-up-long ms-1"></i>
+                  <!-- <i class="trend-icon fa-solid fa-up-long ms-1"></i> -->
                 </div>
                 <div
                   class="night-temp d-flex align-items-center justify-content-end"
                 >
                   <p class="night-temp">+<span class="temp">14</span>°C</p>
-                  <i class="trend-icon fa-solid fa-down-long ms-1"></i>
+                  <!-- <i class="trend-icon fa-solid fa-down-long ms-1"></i> -->
                 </div>
               </div>
             </div>
             <div class="col-2"></div>
             <div class="col-5 article-addon mt-auto mb-auto">
               <div class="feels-like d-flex align-items-center mb-1">
-                <i
+                <!-- <i
                   class="socks-icon fa-solid fa-socks me-1"
                   width="80px"
                   height="80px"
-                ></i>
+                ></i> -->
                 <p class="feels-like-temp article-addon__text">
                   Feels like: <span class="temp">26</span>°C
                 </p>
               </div>
               <div class="humidity d-flex align-items-center mb-1">
-                <i class="humidity-icon fa-solid fa-droplet me-1"></i>
+                <!-- <i class="humidity-icon fa-solid fa-droplet me-1"></i> -->
                 <p class="article-addon__text">
                   Humidity: <span class="humidity-level">18</span>%
                 </p>
               </div>
               <div class="wind d-flex align-items-center">
-                <i class="wind-icon fa-solid fa-wind me-1"></i>
+                <!-- <i class="wind-icon fa-solid fa-wind me-1"></i> -->
                 <p class="article-addon__text">
                   Wind: <span class="wind-speed">1</span> km/h
                 </p>
@@ -131,7 +137,7 @@
             class="update-button btn btn-primary btn-sm shadow-custom"
           >
             Update now
-            <i class="update-icon fa-solid fa-rotate ms-1"></i>
+            <!-- <i class="update-icon fa-solid fa-rotate ms-1"></i> -->
           </button>
         </article>
 
@@ -141,11 +147,11 @@
               <div class="card-body">
                 <h2 class="card-day">Thu</h2>
                 <p class="mb-2">27.10</p>
-                <i
+                <!-- <i
                   class="weather-icon cloud-icon fa-solid fa-cloud mb-2"
                   width="40px"
                   height="40px"
-                ></i>
+                ></i> -->
                 <p>+20°C</p>
                 <p>+11°C</p>
               </div>
@@ -156,11 +162,11 @@
               <div class="card-body">
                 <h2 class="card-day">Wed</h2>
                 <p class="mb-2">28.10</p>
-                <i
+                <!-- <i
                   class="weather-icon sun-icon fa-solid fa-sun mb-2"
                   width="40px"
                   height="40px"
-                ></i>
+                ></i> -->
                 <p>+30°C</p>
                 <p>+16°C</p>
               </div>
@@ -171,11 +177,11 @@
               <div class="card-body">
                 <h2 class="card-day">Fri</h2>
                 <p class="mb-2">29.10</p>
-                <i
+                <!-- <i
                   class="weather-icon thunder-icon fa-solid fa-cloud-bolt mb-2"
                   width="40px"
                   height="40px"
-                ></i>
+                ></i> -->
                 <p>+20°C</p>
                 <p>+8°C</p>
               </div>
@@ -186,11 +192,11 @@
               <div class="card-body">
                 <h2 class="card-day">Sat</h2>
                 <p class="mb-2">30.10</p>
-                <i
+                <!-- <i
                   class="weather-icon rain-icon fa-solid fa-cloud-showers-heavy mb-2"
                   width="40px"
                   height="40px"
-                ></i>
+                ></i> -->
                 <p>+12°C</p>
                 <p>+3°C</p>
               </div>
@@ -201,11 +207,11 @@
               <div class="card-body">
                 <h2 class="card-day">Sun</h2>
                 <p class="mb-2">31.10</p>
-                <i
+                <!-- <i
                   class="weather-icon snow-icon fa-solid fa-snowflake mb-2"
                   width="40px"
                   height="40px"
-                ></i>
+                ></i> -->
                 <p>0°C</p>
                 <p>-2°C</p>
               </div>
