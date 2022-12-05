@@ -79,10 +79,7 @@ border: 1px solid #42A5F5;
 
 .article-city {
     font-size: 26px;
-}
-
-.article-weather__icon {
-    font-size: 80px;
+    margin-bottom: 8px;
 }
 
 .current-temp {
@@ -127,30 +124,6 @@ font-size: 14px;
     font-size: 20px;
 }
 
-.weather-icon {
-    font-size: 40px;
-}
-
-.thunder-icon {
-    color: #2c5372;
-}
-
-.snow-icon {
-    color: #a3ccee;
-}
-
-.sun-icon {
-    color: #ffe600;
-}
-
-.cloud-icon {
-    color: #9dc9ee;
-}
-
-.rain-icon {
-color: #42A5F5;
-}
-
 .card {
     border: none;
 }
@@ -165,4 +138,24 @@ color: #42A5F5;
 
 .form-control {
     height: calc(3.3rem) !important;
+}
+
+.weather-description, .forecast-descr {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.forecast-img {
+    margin: auto;
+}
+
+.isactive {
+    cursor: auto;
+    color: inherit;
+    text-decoration: none;
+    pointer-events: none;
+}
+
+.temps-choice {
+    font-size: 18px;
 }
