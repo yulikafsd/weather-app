@@ -99,6 +99,8 @@ function fetchData(url, message) {
     inCelsius = true;
   }
 
+  formEl.reset();
+
   axios
     .get(url)
     .then(res => {
@@ -161,7 +163,6 @@ function handlePosition(position) {
 }
 
 function onClick(e) {
-  formEl.reset();
   if (e.target !== e.currentTarget) {
     query = e.target.textContent;
     makeFetchByQuery(query);
